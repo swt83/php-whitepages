@@ -1,6 +1,6 @@
 # WhitePages
 
-A PHP library for working w/ the [WhitePages API](https://pro.lookup.whitepages.com/api/).
+A PHP library for working w/ the [WhitePages API](https://pro.whitepages.com/developer/documentation/find-person-api/).
 
 ## Install
 
@@ -11,9 +11,13 @@ Normal install via Composer.
 ```php
 use Travis\WhitePages;
 
-$response = WhitePages::run([
-	'apikey' => 'abcdefg',
+$apikey = 'abcdefg';
+
+$response = WhitePages::run($apikey, 'person', [
+	'name' => 'Ceasar Augustus',
+	'address.city' => 'Washington',
+	'address.state_code' => 'DC',
 ]);
 ```
 
-The ``apikey`` value must be included in your payload for each API request.
+See the [documentation](https://pro.whitepages.com/developer/documentation/find-person-api/) for more information about available methods and parameters.

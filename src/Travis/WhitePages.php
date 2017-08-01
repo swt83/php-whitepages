@@ -2,25 +2,23 @@
 
 namespace Travis;
 
-class WhitePages {
-
+class WhitePages
+{
     /**
      * Method for handling API calls.
      *
+     * @param   string  $apikey
      * @param   string  $method
      * @param   array   $payload
      * @return  object
      */
-    public static function run($method, $args = [])
+    public static function run($apikey, $method, $args = [])
     {
-        // determine apikey
-        $apikey = isset($args['apikey']) ? $args['apikey'] : null;
-
-        // catch error...
-        if (!$apikey) trigger_error('No API key provided.');
-
         // set endpoint
-        $endpoint = 'https://proapi.whitepages.com/2.1/location.json?';
+        $endpoint = 'https://proapi.whitepages.com/3.0/'.$method.'?';
+
+        // add apikey to arguments
+        $args['api_key'] = $apikey;
 
         // build payload
         $payload = '';
@@ -60,5 +58,4 @@ class WhitePages {
         // return array
         return json_decode($response);
     }
-
 }
