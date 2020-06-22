@@ -15,7 +15,7 @@ class WhitePages
     public static function run($apikey, $method, $args = [])
     {
         // set endpoint
-        $endpoint = 'https://proapi.whitepages.com/3.0/'.$method.'?';
+        $endpoint = 'https://api.ekata.com/3.0/'.$method.'?';
 
         // add apikey to arguments
         $args['api_key'] = $apikey;
